@@ -136,22 +136,22 @@ class new_Block(nn.Module):
         # c
         x_w = torch.mean(x, dim=3, keepdim=True)
         x_w_h = torch.mean(x_w, dim=2, keepdim=True)
-        print(x_w_h.shape)
+        # print(x_w_h.shape)
         # w
         x_h = torch.mean(x, dim=2, keepdim=True)
         x_h_c = torch.mean(x_h, dim=1, keepdim=True)
-        print(x_h_c.shape)
+        # print(x_h_c.shape)
         # h
         x_c = torch.mean(x, dim=1, keepdim=True)
         x_c_w = torch.mean(x_c, dim=3, keepdim=True)
-        print(x_c_w.shape)
+        # print(x_c_w.shape)
 
         s_c = self.sigmoid(x_w_h)
-        print(s_c.shape)
+        # print(s_c.shape)
         x_h_c = s_c * x_h_c
-        print(x_h_c.shape)
+        # print(x_h_c.shape)
         x_c_w = s_c * x_c_w
-        print(x_c_w.shape)
+        # print(x_c_w.shape)
 
         x_h_c_conv_relu = self.relu(self.bn(x_h_c))
         x_c_w_conv_relu = self.relu(self.bn(x_c_w))
